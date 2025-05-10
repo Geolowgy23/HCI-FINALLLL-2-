@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup</title>
+  <link rel="stylesheet" href="signup.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h2>Signup</h2>
+  <form id="signup-form">
+    <input type="email" id="email" placeholder="Enter email" required><br><br>
+    <input type="password" id="password" placeholder="Enter password" required><br><br>
+    <button type="submit">Sign Up</button>
+    <p id="error-message" style="color:red;"></p>
+  </form>
+  <p>Already have an account? <a href="login.html" class="link">Login here</a></p>
+
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAt28ChYLH63eHC7GHhCv9eAaM7v75ahl8",
+      authDomain: "weedinga-5c4fa.firebaseapp.com",
+      projectId: "weedinga-5c4fa",
+      storageBucket: "weedinga-5c4fa.firebasestorage.app",
+      messagingSenderId: "29238902591",
+      appId: "1:29238902591:web:45078310e3beba3cf21d8a",
+      measurementId: "G-NQGRMC1V56"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Signup form handler
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Basic format check
+      if (!email.includes('@') || !email.includes('.')) {
+        document.getElementById('error-message').innerText = 'Please enter a valid email address.';
+        return;
+      }
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          alert('Signup successful!');
+          window.location.href = 'login.html'; // Redirect to login
+        })
+        .catch(error => {
+          document.getElementById('error-message').innerText = 'Signup error: ' + error.message;
+        });
+    });
+  </script>
+</body>
+</html>

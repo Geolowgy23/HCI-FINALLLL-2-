@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Simple Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <header>
+        <div class="logo">  
+            <h1>YanisonCycle</h1>
+        </div>
+        <nav>
+            <ul>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="order.html"><i class="fas fa-shopping-cart"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="products">
+        <h2>YanisonCycle Products</h2>
+        <p>Explore our wide range of products designed to meet your needs.</p>
+
+        <!-- Search Bar -->
+        <div id="search-container">
+            <input type="text" id="search-bar" placeholder="Search for a product...">
+            <button id="search-button">Search</button>
+        </div>
+        
+        <!-- Product List -->
+        <div id="products-list"></div>
+    </section>
+
+    <script>
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        const products = [
+            {
+                id: 1,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2024/09/00_Dosnoventa_Detroit_HIVIS_Drop-1960x1440.jpg",
+                name: "DOSNOVEDET",
+                description: "This is the description of Product 1.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 2,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_TYO_Black_B_01_Drop-scaled-1960x1440.jpg",
+                name: "DOS",
+                description: "This is the description of Product 2.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 3,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2025/01/Dosnoventa_TYO_Chrome_B_01_Drop-1960x1440.jpg",
+                name: "Tokyo Build t",
+                description: "This is the description of Product 3.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 4,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_LA_Black_B_01_Flat-scaled-1960x1440.jpg",
+                name: "DOSNOVENTA®05 TYO",
+                description: "This is the description of Product 4.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 5,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2024/09/DSNV_LA_GhostGrey_Drop-1960x1440.jpg",
+                name: "DOSNOVENTA®05 TYO",
+                description: "This is the description of Product 5.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 6,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2025/04/DSNV_LA_SierraCrosses_Frame-1960x1440.jpg",
+                name: "SIERRA CROSSES FRAME",
+                description: "This is the description of Product 6.",
+                type: "Frame",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 7,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_BCN_Black_B_01_Flat-scaled-1960x1440.jpg",
+                name: "DOSNOVENTA®05 TYO",
+                description: "This is the description of Product 7.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            },
+            {
+                id: 8,
+                image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_BCN_Black_B_01_Flat-scaled-1960x1440.jpg",
+                name: "DOSNOVENTA®05 TYO",
+                description: "This is the description of Product 8.",
+                type: "WholeBike",
+                price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000))
+            }
+        ];
+
+        function loadProducts() {
+            const productsContainer = document.getElementById("products-list");
+            productsContainer.innerHTML = "";
+
+            products.forEach(product => {
+                const productCard = document.createElement("div");
+                productCard.classList.add("product-card");
+
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p><strong>Type:</strong> ${product.type}</p>
+                    <p><strong>Price:</strong> ${product.price}</p>
+                    <button class="add-to-cart-btn" onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
+                `;
+
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        function addToCart(product) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(`${product.name} added to cart!`);
+        }
+
+        document.addEventListener("DOMContentLoaded", loadProducts);
+    </script>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>YANISONCYCLE</h3>
+                <p>High-performance cycling culture, inspired by passion.</p>
+            </div>
+            <div class="footer-right">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

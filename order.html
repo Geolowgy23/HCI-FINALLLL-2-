@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - YanisonCycle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="order.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Inline footer styles -->
+  <style>
+    #footer {
+        background-color: black;
+        color: white;
+        padding: 60px 40px 30px;
+        font-family: sans-serif;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-left h3 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    .footer-left p {
+        font-size: 1em;
+        color: #ccc;
+        max-width: 300px;
+        line-height: 1.6;
+    }
+
+    .footer-right ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .footer-right ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-right ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .footer-right ul li a:hover {
+        color: #aaa;
+    }
+
+    .footer-right p {
+        font-size: 0.9em;
+        color: #888;
+    }
+  </style>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAt28ChYLH63eHC7GHhCv9eAaM7v75ahl8",
+      authDomain: "weedinga-5c4fa.firebaseapp.com",
+      projectId: "weedinga-5c4fa",
+      storageBucket: "weedinga-5c4fa.firebasestorage.app",
+      messagingSenderId: "29238902591",
+      appId: "1:29238902591:web:45078310e3beba3cf21d8a",
+      measurementId: "G-NQGRMC1V56"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const cartContainer = document.getElementById("cart-items");
+    const totalPriceContainer = document.getElementById("total-price");
+
+    function formatPrice(price) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function loadCartItems() {
+      const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+      cartContainer.innerHTML = "";
+      let totalPrice = 0;
+
+      if (cartItems.length === 0) {
+        cartContainer.innerHTML = "<p class='empty-cart'>Your cart is empty.</p>";
+        totalPriceContainer.innerHTML = "";
+      } else {
+        cartItems.forEach((item, index) => {
+          const itemDiv = document.createElement("div");
+          itemDiv.classList.add("cart-item");
+          itemDiv.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <p><strong>Type:</strong> ${item.type}</p>
+            <p><strong>Price:</strong> ₱${formatPrice(parseInt(item.price.replace(/[^0-9]/g, '')))}</p>
+            <button class="delete-btn" onclick="removeFromCart(${index})">Delete</button>
+          `;
+          cartContainer.appendChild(itemDiv);
+
+          const priceValue = parseInt(item.price.replace(/[^0-9]/g, ''));
+          totalPrice += priceValue;
+        });
+
+        totalPriceContainer.innerHTML = `Total Price: ₱${formatPrice(totalPrice)}`;
+      }
+    }
+
+    window.removeFromCart = function(index) {
+      const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+      cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      loadCartItems();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("checkout-btn").addEventListener("click", async function () {
+        const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        let totalPrice = 0;
+
+        cartItems.forEach(item => {
+          const priceValue = parseInt(item.price.replace(/[^0-9]/g, ''));
+          totalPrice += priceValue;
+        });
+
+        const orderData = {
+          products: cartItems,
+          totalPrice: totalPrice,
+          paymentMethod: selectedPayment,
+          timestamp: new Date()
+        };
+
+        try {
+          await addDoc(collection(db, "orders"), orderData);
+          alert(`Order placed successfully! Payment method: ${selectedPayment}`);
+          localStorage.removeItem("cart");
+          loadCartItems();
+        } catch (error) {
+          console.error("Error placing order:", error);
+          alert("Failed to place order.");
+        }
+      });
+
+      loadCartItems();
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>YanisonCycle</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="order.html"><i class="fas fa-shopping-cart"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="checkout-container">
+  <h2 class="checkout-title">Review Your Order</h2>
+
+  <div class="checkout-content">
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <h3>Items in Your Cart</h3>
+      <div id="cart-items" class="cart-list"></div>
+      <div class="total-price" id="total-price"></div>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-section">
+      <h3>Choose Payment Method</h3>
+      <div id="payment-options">
+        <label>
+          <input type="radio" name="payment" value="cash" checked>
+          Cash on Delivery
+        </label>
+        <label>
+          <input type="radio" name="payment" value="gcash">
+          GCash
+        </label>
+      </div>
+      <button id="checkout-btn">Place Order</button>
+    </div>
+  </div>
+</main>
+
+
+  <!-- Styled Footer -->
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>YANISONCYCLE</h3>
+        <p>High-performance cycling culture, inspired by passion.</p>
+      </div>
+      <div class="footer-right">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

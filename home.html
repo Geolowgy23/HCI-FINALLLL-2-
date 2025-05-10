@@ -1,0 +1,81 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home - Simple Website</title>
+        <link rel="stylesheet" href="home.css">
+        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1>YanisonCycle</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="order.html"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+
+    <!-- Fullscreen Background Section -->
+    <section id="gif">
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="https://dosnoventabikes.com/wp-content/uploads/2024/09/Dosnoventa_cover_web_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+            <h2>YanisonCycle</h2>
+            <h2>Shop</h2>
+            <p>Cyling is life , Better buy a Unit.</p>
+        </div>
+    </section>
+    <section id="info">
+        <h2>Why Choose Us?</h2>
+        <p>We provide high-quality products with top-notch customer service.</p>
+    </section>
+
+ <!-- Our Products Section -->
+ <section id="products">
+    <h2>BEST DEALS!</h2>
+    <div class="product-container" id="products-list">
+        <!-- Products will be loaded dynamically here -->
+    </div>
+</section>
+<script src="scripts/productsscroll.js"></script>
+<script src="data/products.js"></script>
+
+
+<section id="stories">
+    <h2>STORIES</h2>
+    <div id="stories-list" class="stories-grid"></div>
+</section>
+
+<script src="data/stories.js"></script>
+<!-- footer -->
+<footer id="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <h3>YANISONCYCLE</h3>
+            <p>High-performance cycling culture, inspired by passion.</p>
+        </div>
+        <div class="footer-right">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    </body>
+    </html>

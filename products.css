@@ -1,0 +1,173 @@
+    /* Specific Styling for the Products Page */
+    #products {
+        background-color: #ffffff;
+
+        padding: 30px;
+    }
+
+    #products h2 {
+        color: #000000;
+        text-align: center;
+        font-style: fantasy;
+        margin-bottom: 20px;
+        margin-top: 10%;
+        font-family: fantasy;
+        letter-spacing: 2mm;
+    }
+
+    #products p {
+        font-size: 1.1em;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #000000;
+     
+        
+    }
+
+    /* Product Card Styling */
+    .product-card {
+        background-color: #d3d7da;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 15px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: calc(33% - 30px); /* Three products per row */
+        display: inline-block;
+    }
+    .product-card img {
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+        object-fit: cover; /* Ensures the image fills the container */
+    }
+
+    .product-card h3 {
+        font-size: 1.5em;
+        color: #333;
+        margin-top: 10px;
+    }
+
+    .product-card p {
+        font-size: 1em;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    /* Hover Effect */
+    .product-card:hover {
+        transform: scale(1.05); /* Slightly increases the size */
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow effect */
+    }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .product-card {
+        width: calc(50% - 30px); /* Two per row on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 100%; /* Full width on mobile */
+    }
+}
+
+
+
+
+/* Search Bar Styling */
+#search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: 2px solid #00ff08;
+    border-radius: 20px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#search-bar:focus {
+    border-color: #000000;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+#search-button {
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    background-color: #000000;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+#search-button:hover {
+    background-color: #000000;
+}
+
+/*footer*/
+#footer {
+    background-color: black;
+    color: white;
+    padding: 60px 40px 30px;
+    font-family: sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-left h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.footer-left p {
+    font-size: 1em;
+    color: #ccc;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.footer-right ul li {
+    margin-bottom: 10px;
+}
+
+.footer-right ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-right ul li a:hover {
+    color: #aaa;
+}
+
+.footer-right p {
+    font-size: 0.9em;
+    color: #888;
+}
+

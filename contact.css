@@ -1,0 +1,17 @@
+/* Specific Styling for the Contact Page */
+#contact {
+    background-color: #fce4ec;
+    padding: 30px;
+}
+
+#contact h2 {
+    color: #d81b60;
+}
+
+#contact ul {
+    font-size: 1.1em;
+}
+
+#contact li {
+    color: #e91e63;
+}
