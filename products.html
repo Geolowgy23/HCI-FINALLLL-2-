@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - YanisonCycle</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="products.css">
-    <link rel="stylesheet" href="header.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products - YanisonCycle</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="products.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-    <header>
-        <div class="logo">  
-            <h1>YanisonCycle</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="order.html"><i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="products">
-        <h2>YanisonCycle Products</h2>
-        <p>Explore our wide range of products designed to meet your needs.</p>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>YanisonCycle</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="order.html"><i class="fas fa-shopping-cart"></i></a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <!-- Search Bar -->
-        <div id="search-container">
-            <input type="text" id="search-bar" placeholder="Search for a product...">
-            <button id="search-button">Search</button>
-        </div>
-        
-        <!-- Product List -->
-        <div id="products-list"></div>
-    </section>
+  <!-- Products Section -->
+  <section id="products">
+    <h2>OUR PRODUCTS</h2>
+    <p>Explore our wide range of products designed to meet your needs.</p>
 
-    <script>
-        function formatPrice(price) {
-            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
+    <!-- Search Bar -->
+    <div id="search-container">
+      <input type="text" id="search-bar" placeholder="Search for a product...">
+      <button id="search-button">Search</button>
+    </div>
 
-       const products = [
+    <!-- Category Buttons -->
+    <div id="category-bar">
+      <button class="category-btn active" data-category="all">All</button>
+      <button class="category-btn" data-category="WholeBike">Whole Bike</button>
+      <button class="category-btn" data-category="Frame">Frame</button>
+    </div>
+
+    <!-- Product List -->
+    <div id="products-list"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>YanisonCycle</h3>
+        <p>High-performance cycling culture, inspired by passion.</p>
+      </div>
+      <div class="footer-right">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Script -->
+ <script>
+  function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+
+   const products = [
   {
     id: 1,
     image: "https://dosnoventabikes.com/wp-content/uploads/2024/09/00_Dosnoventa_Detroit_HIVIS_Drop-1960x1440.jpg",
@@ -52,61 +83,61 @@
     type: "WholeBike",
     price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "Dosnoventa Alloy Handlebar and Stem",
-      wheelset: "H Plus Son Archetype Rims with Novatec Hubs",
-      crankset: "Sugino 75 Crankset"
+      cockpit: "Zipp SL-70 Aero Handlebar",
+      wheelset: "ENVE SES 3.4 Rims with Chris King Hubs",
+      crankset: "Campagnolo Record Crankset"
     }
   },
   {
     id: 2,
     image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_TYO_Black_B_01_Drop-scaled-1960x1440.jpg",
-    name: "DOS",
-    description: "This is the description of Product 2.",
+    name: "TOKYO BLACK",
+    description: "THE TOKYO, DOSNOVENTA HIGH-END FULL CARBON FRAME SET. SUPERLIGHT, EXCEPTIONALLY STIFF AND HIGH-PERFORMANCE.",
     type: "WholeBike",
     price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "Thomson Alloy Cockpit Kit",
-      wheelset: "Mavic Open Pro Rims with Phil Wood Hubs",
-      crankset: "Omnium Track Crankset"
+      cockpit: "Deda Zero100 Handlebar and Stem",
+      wheelset: "Campagnolo Bora WTO 45 Rims with Cult Hubs",
+      crankset: "Rotor Aldhu Carbon Crankset"
     }
   },
   {
     id: 3,
     image: "https://dosnoventabikes.com/wp-content/uploads/2025/01/Dosnoventa_TYO_Chrome_B_01_Drop-1960x1440.jpg",
-    name: "Tokyo Build t",
-    description: "This is the description of Product 3.",
+    name: "THE UNSEEN BIKE",
+    description: "A LIMITED EDITION OF THE DOSNOVENTA®️ FULL-CARBON TOKYO FRAME, CHROME-LIKE FINISH THROUGH SPUTTERING.",
     type: "WholeBike",
     price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "Cinelli Alu Track Handlebar",
-      wheelset: "Velocity Deep V Rims with DT Swiss Hubs",
-      crankset: "Sugino 75 Track Crankset"
+      cockpit: "FSA SL-K Compact Drop Bar",
+      wheelset: "DT Swiss ARC 1100 DICUT Rims with 180 Hubs",
+      crankset: "Praxis Zayante Carbon Crankset"
     }
   },
   {
     id: 4,
     image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_LA_Black_B_01_Flat-scaled-1960x1440.jpg",
-    name: "DOSNOVENTA®05 TYO",
-    description: "This is the description of Product 4.",
+    name: "AGRESIVE JET BLACK",
+    description: "COMPETITIVE, FAST, LIGHT, STIFF, REACTIVE AND VERY UNIQUE",
     type: "WholeBike",
     price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "FSA Energy Alloy Handlebar",
-      wheelset: "Mavic Ksyrium Elite Rims with Shimano Hubs",
-      crankset: "Shimano 105 Crankset"
+      cockpit: "Ritchey WCS Carbon Streem II",
+      wheelset: "Zipp 303 Firecrest Carbon Rims with ZR1 Hubs",
+      crankset: "Easton EC90 SL Crankset"
     }
   },
   {
     id: 5,
     image: "https://dosnoventabikes.com/wp-content/uploads/2024/09/DSNV_LA_GhostGrey_Drop-1960x1440.jpg",
-    name: "DOSNOVENTA®05 TYO",
-    description: "This is the description of Product 5.",
+    name: "GHOST GREY",
+    description: "HIGH-QUALITY, SMOOTH, LONG-LASTING AND VERY ICONIC.",
     type: "WholeBike",
     price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "Easton EA70 Alloy Handlebar",
-      wheelset: "Zipp 404 Carbon Rims with DT Swiss 350 Hubs",
-      crankset: "Sram Force Crankset"
+      cockpit: "PRO Vibe Alloy Handlebar",
+      wheelset: "Fulcrum Racing Zero Nite",
+      crankset: "Shimano Ultegra R8000 Crankset"
     }
   },
   {
@@ -115,86 +146,167 @@
     name: "SIERRA CROSSES FRAME",
     description: "This is the description of Product 6.",
     type: "Frame",
-    price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
+    price: "₱" + formatPrice(8000 + Math.floor(Math.random() * 7000)),
     specs: {
       frame_material: "Aluminum Alloy",
-      fork: "Carbon Fiber Fork",
-      weight: "1.2kg"
+      fork: "Columbus Futura Carbon Fork",
+      weight: "1.1kg"
     }
   },
   {
     id: 7,
     image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_BCN_Black_B_01_Flat-scaled-1960x1440.jpg",
-    name: "DOSNOVENTA®05 TYO",
-    description: "This is the description of Product 7.",
+    name: "JET BLACK",
+    description: "THE DETROIT, THE MOST AGGRESSIVE SHAPE OF DOSNOVENTA.",
     type: "WholeBike",
-    price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
+    price: "₱" + formatPrice(20000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "Thomson Alloy Handlebar",
-      wheelset: "Mavic Cosmic Carbone Rims with Chris King Hubs",
-      crankset: "Shimano Dura-Ace Crankset"
+      cockpit: "Bontrager Pro VR-CF Carbon Bar",
+      wheelset: "Reynolds AR58 DB Rims with Industry Nine Hubs",
+      crankset: "FSA Gossamer Pro Crankset"
     }
   },
   {
     id: 8,
     image: "https://dosnoventabikes.com/wp-content/uploads/2020/10/DSNV_BCN_Black_B_01_Flat-scaled-1960x1440.jpg",
-    name: "DOSNOVENTA®05 TYO",
-    description: "This is the description of Product 8.",
+    name: "BARCELONA CLASSIC",
+    description: "THE CLASSIC STEEL FRAME SET FROM DOSNOVENTA.",
     type: "WholeBike",
     price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
     specs: {
-      cockpit: "Cinelli Alloy Handlebar",
-      wheelset: "H Plus Son Archetype Rims with Novatec Hubs",
-      crankset: "Sugino 75 Crankset"
+      cockpit: "Salsa Cowbell Handlebar",
+      wheelset: "Alexrims ALX440 with Formula Hubs",
+      crankset: "Shimano Tiagra Crankset"
+    }
+  },
+  {
+    id: 9,
+    image: "https://dosnoventabikes.com/wp-content/uploads/2025/04/DSNV_LA_SierraCrosses_Dosnoventa-1960x1440.jpg",
+    name: "SIERRA CROSSES BIKE",
+    description: "LIMITED EDITION LOS ANGELES BIKE IN COLLABORATION WITH SIERRA CROSSES.",
+    type: "WholeBike",
+    price: "₱" + formatPrice(15000 + Math.floor(Math.random() * 5000)),
+    specs: {
+      cockpit: "Vision Metron 5D Integrated Bar",
+      wheelset: "Lightweight Meilenstein Carbon Wheelset",
+      crankset: "Rotor 3D+ Crankset"
+    }
+  },
+  {
+    id: 10,
+    image: "https://dosnoventabikes.com/wp-content/uploads/2024/04/03_Dosnoventa_NinePointNine_Detroit_FrameSet-1960x1440.jpg",
+    name: "NINEPointNINE",
+    description: "MOST AGGRESSIVE GEOMETRY FRAME IN DOSNOVENTA® X NINE POINT NINE® COLLAB.",
+    type: "Frame",
+    price: "₱" + formatPrice(1500 + Math.floor(Math.random() * 5000)),
+    specs: {
+      frame_material: "High Modulus Carbon",
+      fork: "Full Carbon Monocoque Fork",
+      weight: "950g"
+    }
+  },
+  {
+    id: 11,
+    image: "https://dosnoventabikes.com/wp-content/uploads/2025/01/Dosnoventa_TYO_Chrome_F_01_Lateral-1960x1440.jpg",
+    name: "THE UNSEEN",
+    description: "LIMITED EDITION TOKYO FRAME CRAFTED USING SPUTTERING TECHNIQUE.",
+    type: "Frame",
+    price: "₱" + formatPrice(1500 + Math.floor(Math.random() * 5000)),
+    specs: {
+      frame_material: "Carbon Fiber Reinforced Polymer",
+      fork: "Tapered Carbon Steerer Fork",
+      weight: "1.05kg"
+    }
+  },
+  {
+    id: 12,
+    image: "https://dosnoventabikes.com/wp-content/uploads/2024/09/DSNV_DET_HIVIS_01.jpg",
+    name: "DETROIT YELLOW",
+    description: "THE MOST AGGRESSIVE SHAPE OF DOSNOVENTA. COMPETITIVE, FAST, LIGHT.",
+    type: "Frame",
+    price: "₱" + formatPrice(1500 + Math.floor(Math.random() * 5000)),
+    specs: {
+      frame_material: "Triple Butted Aluminum",
+      fork: "Easton EC70 Carbon Fork",
+      weight: "1.3kg"
     }
   }
 ];
 
+    let currentCategory = 'all';
+  let currentSearch = '';
 
-        function loadProducts() {
-            const productsContainer = document.getElementById("products-list");
-            productsContainer.innerHTML = "";
+  function filterProducts() {
+    const filtered = products.filter(product => {
+      const matchesCategory = currentCategory === 'all' || product.type === currentCategory;
+      const matchesSearch = product.name.toLowerCase().includes(currentSearch.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
 
-            products.forEach(product => {
-                const productCard = document.createElement("div");
-                productCard.classList.add("product-card");
+    displayProducts(filtered);
+  }
 
-                productCard.innerHTML = `
-    <a href="productinfopage.html?id=${product.id}" class="product-link">
-        <img src="${product.image}" alt="${product.name}">
-        <div class="info">
+  function displayProducts(productList) {
+    const productsContainer = document.getElementById("products-list");
+    productsContainer.innerHTML = "";
+
+    if (productList.length === 0) {
+      productsContainer.innerHTML = `<p style="text-align:center;">No products found.</p>`;
+      return;
+    }
+
+    productList.forEach(product => {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card");
+
+      productCard.innerHTML = `
+        <a href="productinfopage.html?id=${product.id}" class="product-link">
+          <img src="${product.image}" alt="${product.name}">
+          <div class="info">
             <h3>${product.name}</h3>
             <p class="product-description">${product.description}</p>
             <p><strong>Type:</strong> ${product.type}</p>
             <p><strong>Price:</strong> ${product.price}</p>
-        </div>
-    </a>
-`;
+          </div>
+        </a>
+      `;
 
+      productsContainer.appendChild(productCard);
+    });
+  }
 
-                productsContainer.appendChild(productCard);
-            });
-        }
+  document.addEventListener("DOMContentLoaded", () => {
+    // Load all initially
+    filterProducts();
 
-        document.addEventListener("DOMContentLoaded", loadProducts);
-    </script>
-    
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>YANISONCYCLE</h3>
-                <p>High-performance cycling culture, inspired by passion.</p>
-            </div>
-            <div class="footer-right">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    // Search functionality
+    const searchInput = document.getElementById("search-bar");
+    const searchButton = document.getElementById("search-button");
+
+    searchInput.addEventListener("input", () => {
+      currentSearch = searchInput.value;
+      filterProducts();
+    });
+
+    searchButton.addEventListener("click", () => {
+      currentSearch = searchInput.value;
+      filterProducts();
+    });
+
+    // Category filter functionality
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    categoryButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        // Remove active class from all
+        categoryButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        currentCategory = button.dataset.category;
+        filterProducts();
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
