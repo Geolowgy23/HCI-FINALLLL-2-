@@ -1,49 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - YanisonCycle</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="products.css">
-    <link rel="stylesheet" href="header.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Info - YanisonCycle</title>
+  <link rel="stylesheet" href="productinfo.css"/>
 </head>
 <body>
-    <header>
-        <div class="logo">  
-            <h1>YanisonCycle</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="order.html"><i class="fas fa-shopping-cart"></i></a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">YanisonCycle</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="order.html">Cart</a>
+    </nav>
+  </header>
 
-    <section id="products">
-        <h2>YanisonCycle Products</h2>
-        <p>Explore our wide range of products designed to meet your needs.</p>
+  <main id="product-info">
+    <div id="product-details"></div>
+    <div class="actions">
+      <button id="add-to-cart-btn">Add to Cart</button>
+      <a href="order.html" class="cart-link">See Your Cart</a>
+    </div>
+  </main>
 
-        <!-- Search Bar -->
-        <div id="search-container">
-            <input type="text" id="search-bar" placeholder="Search for a product...">
-            <button id="search-button">Search</button>
-        </div>
-        
-        <!-- Product List -->
-        <div id="products-list"></div>
-    </section>
+  <footer>
+    <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
+  </footer>
 
-    <script>
-        function formatPrice(price) {
-            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
+  <script>
+    const productInfoContainer = document.getElementById('product-details');
+    const productId = new URLSearchParams(window.location.search).get('id');
 
-       const products = [
+    const products = [
   {
     id: 1,
     image: "https://dosnoventabikes.com/wp-content/uploads/2024/09/00_Dosnoventa_Detroit_HIVIS_Drop-1960x1440.jpg",
@@ -151,50 +140,69 @@
 ];
 
 
-        function loadProducts() {
-            const productsContainer = document.getElementById("products-list");
-            productsContainer.innerHTML = "";
+    function formatPrice(price) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
-            products.forEach(product => {
-                const productCard = document.createElement("div");
-                productCard.classList.add("product-card");
-
-                productCard.innerHTML = `
-    <a href="productinfopage.html?id=${product.id}" class="product-link">
-        <img src="${product.image}" alt="${product.name}">
-        <div class="info">
-            <h3>${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p><strong>Type:</strong> ${product.type}</p>
-            <p><strong>Price:</strong> ${product.price}</p>
-        </div>
-    </a>
-`;
-
-
-                productsContainer.appendChild(productCard);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadProducts);
-    </script>
+function loadProductDetails() {
+  const product = products.find(p => p.id == productId);
+  if (product) {
+    let specsHtml = '';
     
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <h3>YANISONCYCLE</h3>
-                <p>High-performance cycling culture, inspired by passion.</p>
-            </div>
-            <div class="footer-right">
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <p>&copy; 2025 YanisonCycle. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    if (product.type === 'WholeBike') {
+      specsHtml = `
+        <h3>Specifications</h3>
+        <ul>
+          <li><strong>Cockpit:</strong> ${product.specs.cockpit}</li>
+          <li><strong>Wheelset:</strong> ${product.specs.wheelset}</li>
+          <li><strong>Crankset:</strong> ${product.specs.crankset}</li>
+        </ul>
+      `;
+    } else if (product.type === 'Frame') {
+      specsHtml = `
+        <h3>Specifications</h3>
+        <ul>
+          <li><strong>Frame Material:</strong> ${product.specs.frame_material}</li>
+          <li><strong>Fork:</strong> ${product.specs.fork}</li>
+          <li><strong>Weight:</strong> ${product.specs.weight}</li>
+        </ul>
+      `;
+    }
+
+    productInfoContainer.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <div class="info-text">
+        <h2>${product.name}</h2>
+        <p class="description">${product.description}</p>
+        <p><strong>Type:</strong> ${product.type}</p>
+        <p><strong>Price:</strong> ${product.price}</p>
+        ${specsHtml}
+        <label for="size-select">Size:</label>
+        <select id="size-select">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    `;
+  }
+}
+
+
+    function addToCart() {
+      const product = products.find(p => p.id == productId);
+      const selectedSize = document.getElementById("size-select").value;
+      const productWithSize = { ...product, size: selectedSize };
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(productWithSize);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert(`${product.name} - ${selectedSize} added to cart!`);
+    }
+
+    document.getElementById("add-to-cart-btn").addEventListener("click", addToCart);
+    window.addEventListener("DOMContentLoaded", loadProductDetails);
+  </script>
 </body>
 </html>

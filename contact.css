@@ -1,17 +1,113 @@
-/* Specific Styling for the Contact Page */
+/* Minimalist Black and White Styling with Background Image and Padding */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://dosnoventabikes.com/wp-content/uploads/2023/09/01_COVER_COVER1COVER_WEB_08_Dosnoventa_Maharishi_09_-22.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Optional: keeps image fixed while scrolling */
+  color: #000;
+  overflow-y: scroll;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px); /* adjusts for header height */
+  padding: 40px 20px;
+}
+
 #contact {
-    background-color: #fce4ec;
-    padding: 30px;
+  width: 100%;
+  padding: 60px 20px;
+  background-image: url("https://dosnoventabikes.com/wp-content/uploads/2023/09/01_COVER_COVER1COVER_WEB_08_Dosnoventa_Maharishi_09_-22.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Optional: Add backdrop to content for readability */
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 
 #contact h2 {
-    color: #d81b60;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+#contact p {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
 }
 
 #contact ul {
-    font-size: 1.1em;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
 }
 
 #contact li {
-    color: #e91e63;
+  margin-bottom: 8px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-size: 1em;
+  background-color: transparent;
+  color: #000;
+  resize: vertical;
+}
+
+#contact-form textarea {
+  min-height: 100px;
+}
+
+#contact-form button {
+  padding: 12px 15px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: #333;
+}
+
+#form-notification {
+  margin-top: 15px;
+  color: green;
+  font-weight: bold;
+  display: none;
+  text-align: center;
+}
+
+#form-notification.visible {
+  display: block;
 }

@@ -1,0 +1,162 @@
+/* Global base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: #000;
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto;
+}
+
+/* Main product section */
+main#product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+/* Product display - two columns */
+#product-details {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Image section */
+#product-details img {
+  width: 100%;
+  max-width: 800px; /* Increased width for a bigger image */
+  height: auto; /* Ensures the height adjusts proportionally */
+  flex: 1; /* Makes the image take the available space */
+  border: 2px solid #000;
+  border-radius: 8px;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* Info section */
+#product-details .info-text {
+  flex: 1; /* Ensures the info section is the same width as the image */
+  border: 1px solid #000;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Name */
+#product-details .info-text h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* Description */
+#product-details .description {
+  font-size: 20px;
+  font-style: italic;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Type & Price */
+#product-details .info-text p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+/* Specifications section */
+#product-details .specs h3 {
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+#product-details .specs ul {
+  list-style: none;
+  padding: 0;
+}
+
+#product-details .specs li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Select dropdown */
+#product-details select {
+  margin-top: 15px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #000;
+  background-color: #fff;
+  color: #111;
+}
+
+/* Actions */
+.actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+button,
+.cart-link {
+  padding: 12px 24px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+button:hover,
+.cart-link:hover {
+  background-color: #333;
+}
